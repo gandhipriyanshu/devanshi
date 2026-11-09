@@ -15,7 +15,8 @@ function initStarlight() {
   const container = document.getElementById('starlight-container');
   if (!container) return;
 
-  const starCount = 35;
+  // 1. Subtle Twinkling Starlight
+  const starCount = 28;
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.className = 'star-particle';
@@ -30,6 +31,19 @@ function initStarlight() {
       star.style.boxShadow = '0 0 8px rgba(233, 184, 106, 0.8)';
     }
     container.appendChild(star);
+  }
+
+  // 2. Slow Floating Stars & Hearts (18 total - Phase 2 requirement)
+  const symbols = ['✨', '⭐', '💖', '✨', '⭐'];
+  for (let j = 0; j < 18; j++) {
+    const floatEl = document.createElement('span');
+    floatEl.className = 'floating-ambient-item';
+    floatEl.textContent = symbols[j % symbols.length];
+    floatEl.style.left = `${Math.random() * 94}%`;
+    floatEl.style.animationDuration = `${12 + Math.random() * 8}s`;
+    floatEl.style.animationDelay = `${Math.random() * 10}s`;
+    floatEl.style.fontSize = `${12 + Math.random() * 12}px`;
+    container.appendChild(floatEl);
   }
 }
 

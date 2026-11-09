@@ -31,13 +31,382 @@
 .hero-title {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(2.3rem, 7.5vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+  line-height: 1.15;
   letter-spacing: -0.01em;
+  text-shadow: 0 4px 30px rgba(233, 184, 106, 0.2);
+}
+
+/* Letter-by-Letter Entrance Animation (Phase 2) */
+.char-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scale(0.85);
+  animation: charEntrance 0.75s var(--ease-spring) forwards;
+  animation-delay: calc(var(--char-index) * 0.045s);
   background: linear-gradient(180deg, #FFFFFF 20%, #F5DEC2 70%, #D8A763 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.char-space {
+  display: inline-block;
+  width: 0.32em;
+}
+
+@keyframes charEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.85);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Cake Stage & Podium */
+.cake-showcase-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  user-select: none;
+}
+
+/* Glass pedestal / glow plate beneath cake */
+.cake-shadow-podium {
+  position: absolute;
+  bottom: 6px;
+  width: 82%;
+  height: 38px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+.cake-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  z-index: 2;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.cake-wrapper:hover {
+  transform: translateY(-4px) scale(1.015);
+}
+
+.real-cake-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.65));
+  pointer-events: none;
+}
+
+/* Dynamic Candlelight Reflection on Cake Top */
+.cake-candlelight-reflection {
+  position: absolute;
+  top: 18%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 70px;
+  background: radial-gradient(ellipse at center, rgba(255, 200, 100, 0.45) 0%, rgba(255, 160, 60, 0.15) 50%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(8px);
+  transition: opacity 0.8s ease;
+  animation: reflectionFlicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes reflectionFlicker {
+  0% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.98); }
+}
+
+/* Interactive Candle Component */
+.candle-container {
+  position: absolute;
+  top: 15%;
+  left: 48%;
+  transform: translate(-50%, -100%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Slender Golden Candle Stick */
+.candle-stick {
+  width: 11px;
+  height: 52px;
+  background: linear-gradient(90deg, #F9E7BE 0%, #F5C564 35%, #D69736 75%, #FFF0D0 100%);
+  border-radius: 5px 5px 3px 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -2px 4px rgba(160, 100, 20, 0.4);
+  position: relative;
+}
+
+.candle-stick::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(255, 255, 255, 0.35) 6px,
+    rgba(255, 255, 255, 0.35) 10px
+  );
+  border-radius: inherit;
+}
+
+/* Candle Wick */
+.candle-wick {
+  width: 2px;
+  height: 9px;
+  background: #382516;
+  border-radius: 1px;
+  margin-bottom: -1px;
+}
+
+/* Realistic Golden Flame */
+.candle-flame-wrapper {
+  position: relative;
+  width: 22px;
+  height: 38px;
+  transform-origin: center bottom;
+  animation: flamePhysics 2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.9)) drop-shadow(0 0 24px rgba(255, 120, 40, 0.5));
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flame-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes flamePhysics {
+  0% { transform: rotate(-2deg) scale(1, 1); }
+  25% { transform: rotate(2deg) scale(1.05, 0.95); }
+  50% { transform: rotate(-1deg) scale(0.96, 1.04); }
+  75% { transform: rotate(3deg) scale(1.04, 0.98); }
+  100% { transform: rotate(0deg) scale(0.98, 1.02); }
+}
+
+/* Smoke Wisp on Candle Blow */
+.smoke-particle {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: rgba(220, 220, 220, 0.7);
+  border-radius: 50%;
+  filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.candle-container.blown-out .candle-flame-wrapper {
+  opacity: 0;
+  transform: scale(0.1) translateY(-14px);
+  pointer-events: none;
+}
+
+.candle-container.blown-out .smoke-particle {
+  animation: riseAndFade 1.6s ease-out forwards;
+}
+
+@keyframes riseAndFade {
+  0% {
+    opacity: 0.9;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(calc(-50% + 12px)) translateY(-28px) scale(2.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(calc(-50% - 16px)) translateY(-56px) scale(4.5);
+  }
+}
+
+/* Interactive Hint & Wish Status */
+.hint-wrapper {
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0;
+}
+
+.interactive-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-cream-muted);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.interactive-pill .magic-star {
+  color: var(--gold-primary);
+  font-size: 1.05rem;
+  animation: starPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.25) rotate(18deg); opacity: 1; }
+}
+
+/* Action Area with Reveal Transition */
+.action-area {
+  min-height: 60px;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-reveal-btn {
+  opacity: 0;
+  transform: translateY(20px) scale(0.92);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.7s var(--ease-spring),
+              transform 0.7s var(--ease-spring),
+              visibility 0.7s ease;
+}
+
+.letter-reveal-btn.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Quick Blow Action Pill for Mobile Accessibility */
+.tap-blow-pill {
+  cursor: pointer;
+  background: rgba(233, 184, 106, 0.12);
+  border: 1px solid rgba(233, 184, 106, 0.35);
+  color: var(--gold-light);
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.tap-blow-pill:hover {
+  background: rgba(233, 184, 106, 0.22);
+  transform: scale(1.04);
+}
+
+/* Responsive Scaling */
+@media (max-height: 680px) {
+  .cake-wrapper {
+    max-width: 270px;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .sub-tagline {
+    font-size: 1.25rem;
+  }
+}
+#cake-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: calc(100dvh - 3rem);
+  padding: 0.5rem 0;
+}
+
+/* Header Typography */
+.cake-header {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sub-tagline {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  color: var(--gold-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+  opacity: 0.95;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   text-shadow: 0 4px 30px rgba(233, 184, 106, 0.2);
+}
+
+/* Letter-by-Letter Entrance Animation (Phase 2) */
+.char-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scale(0.85);
+  animation: charEntrance 0.75s var(--ease-spring) forwards;
+  animation-delay: calc(var(--char-index) * 0.045s);
+  background: linear-gradient(180deg, #FFFFFF 20%, #F5DEC2 70%, #D8A763 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.char-space {
+  display: inline-block;
+  width: 0.32em;
+}
+
+@keyframes charEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.85);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Cake Stage & Podium */

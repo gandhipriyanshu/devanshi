@@ -93,6 +93,33 @@ html, body {
   100% { opacity: 0.25; transform: scale(0.9); }
 }
 
+/* Floating Ambient Stars & Hearts (15-25 count) */
+.floating-ambient-item {
+  position: absolute;
+  color: var(--gold-light);
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0.25;
+  animation: floatAmbientUp 14s linear infinite;
+}
+
+@keyframes floatAmbientUp {
+  0% {
+    transform: translateY(105vh) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(180deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
 /* App Viewport Container */
 .app-viewport {
   width: 100%;

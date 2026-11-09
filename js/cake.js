@@ -4,6 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeadlineAnimation();
+
   const candle = document.getElementById('candle');
   const cakeWrapper = document.getElementById('cake-wrapper');
   const quickBlowBtn = document.getElementById('quick-blow-btn');
@@ -151,3 +153,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/**
+ * Phase 2: Staggered Letter-by-Letter Entrance Animation for the Headline
+ * Preserves plain text accessibly when prefers-reduced-motion is active.
+ */
+function initHeadlineAnimation() {
+  const title = document.querySelector('.hero-title');
+  if (!title) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const rawText = title.textContent.trim();
+  title.innerHTML = '';
+  title.setAttribute('aria-label', rawText);
+
+  Array.from(rawText).forEach((char, index) => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    if (char === ' ') {
+      span.className = 'char-space';
+    } else {
+      span.className = 'char-span';
+      span.style.setProperty('--char-index', index);
+    }
+    title.appendChild(span);
+  });
+}
