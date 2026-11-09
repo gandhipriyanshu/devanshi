@@ -110,13 +110,13 @@ Complete and check one phase before starting the next.
 
 ## 5. Final Checklist
 
-- [ ] Page 1 shows the cake and "Happy Birthday Devanshi"
-- [ ] Candles flicker and can be blown out
-- [ ] Confetti and floating elements play after the wish
-- [ ] "Open your letter" leads to page 2
-- [ ] Envelope opens smoothly and the letter is readable
-- [ ] Music toggle works across both pages
-- [ ] Works on phone and desktop
+- [x] Page 1 shows the cake and "Happy Birthday Devanshi"
+- [x] Candles flicker and can be blown out
+- [x] Confetti and floating elements play after the wish
+- [x] "Open your letter" leads to page 2
+- [x] Envelope opens smoothly and the letter is readable
+- [x] Music toggle works across both pages
+- [x] Works on phone and desktop
 - [ ] Deployed and tested on a real phone
 
 ## 6. Risks
