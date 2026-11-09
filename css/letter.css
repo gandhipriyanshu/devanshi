@@ -171,6 +171,38 @@
   transform: translateY(0) scale(1);
 }
 
+/* Staggered Line-by-Line Reveal Animation (Phase 5) */
+.letter-paper.revealed .letter-greeting {
+  opacity: 0;
+  animation: letterLineFade 0.7s var(--ease-spring) forwards 0.15s;
+}
+
+.letter-paper.revealed .letter-body {
+  opacity: 0;
+  animation: letterLineFade 0.8s var(--ease-smooth) forwards 0.35s;
+}
+
+.letter-paper.revealed .letter-polaroid {
+  opacity: 0;
+  animation: letterLineFade 0.8s var(--ease-spring) forwards 0.55s;
+}
+
+.letter-paper.revealed .letter-signoff {
+  opacity: 0;
+  animation: letterLineFade 0.7s var(--ease-spring) forwards 0.75s;
+}
+
+@keyframes letterLineFade {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Letter Typography & Texture */
 .letter-greeting {
   font-family: var(--font-handwritten);
