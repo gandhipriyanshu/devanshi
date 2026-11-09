@@ -19,3 +19,4 @@
 ## 🎵 Media Assets
 * `assets/audio/birthday-music.mp3` — Background soft instrumental / lofi music.
 * `assets/images/polaroid.jpg` — (Optional) photo for the envelope.
+

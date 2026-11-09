@@ -141,7 +141,7 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* Subtle Floating Elements */
+/* Floating Background Sparkles */
 .sparkle-bg {
   position: fixed;
   top: 0;
@@ -153,6 +153,71 @@ html, body {
   overflow: hidden;
 }
 
+.floating-item {
+  position: absolute;
+  color: var(--color-primary);
+  opacity: 0.35;
+  user-select: none;
+  animation: floatUp 12s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Persistent Audio Toggle Button */
+.audio-toggle-btn {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-primary-light);
+  box-shadow: 0 4px 12px rgba(85, 45, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.audio-toggle-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--color-primary);
+}
+
+.audio-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+.audio-toggle-btn.playing {
+  animation: pulseRotate 4s ease-in-out infinite;
+}
+
+@keyframes pulseRotate {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.06) rotate(15deg); }
+}
+
 /* Accessible Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -162,3 +227,4 @@ html, body {
     scroll-behavior: auto !important;
   }
 }
+

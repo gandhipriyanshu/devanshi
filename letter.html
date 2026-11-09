@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>A Letter for Devanshi 💌</title>
+  
+  <!-- SEO & Social Open Graph Previews -->
+  <meta name="description" content="A handwritten birthday letter for Devanshi.">
+  <meta property="og:title" content="A Letter for Devanshi 💌">
+  <meta property="og:description" content="A warm, personal birthday message just for you.">
+  <meta property="og:type" content="website">
+  
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/letter.css">
+</head>
+<body>
+
+  <!-- Floating Sparkle Background Particles -->
+  <div class="sparkle-bg" id="sparkle-container" aria-hidden="true"></div>
+
+  <!-- Music Controller Toggle -->
+  <button id="audio-toggle" class="audio-toggle-btn" aria-label="Toggle background music" title="Toggle Music">
+    <span class="music-icon">🎵</span>
+  </button>
+  <audio id="bg-audio" src="assets/audio/birthday-chime.wav" loop preload="auto"></audio>
+
+  <!-- Main Viewport -->
+  <div class="app-viewport">
+    <main class="page-container" id="letter-page">
+      
+      <!-- Letter Header -->
+      <header class="greeting-header">
+        <h1 class="script-heading main-title" style="font-size: clamp(2.4rem, 8vw, 3.6rem); color: var(--color-primary);">
+          A Letter for You 💌
+        </h1>
+        <p class="sub-hint">From the heart, for your special day</p>
+      </header>
+
+      <!-- Placeholder Envelope & Letter Stage (to be expanded in Phase 4 & 5) -->
+      <section class="letter-stage" aria-label="Envelope Display" style="margin: 2rem 0; min-height: 220px; display: flex; align-items: center; justify-content: center; width: 100%;">
+        <div style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius-card); border: 1px dashed var(--color-primary-light); box-shadow: 0 8px 24px var(--color-paper-shadow); max-width: 320px; width: 100%;">
+          <div style="font-size: 4.5rem; margin-bottom: 0.5rem; animation: gentleWiggle 2.5s infinite ease-in-out;">💌</div>
+          <p style="font-weight: 600; color: var(--color-text);">Your Sealed Envelope awaits...</p>
+          <p class="sub-hint" style="font-size: 0.85rem;">Phase 4 & 5 will add the interactive wax seal and opening letter</p>
+        </div>
+      </section>
+
+      <!-- Phase 1 Back Action Button -->
+      <footer class="action-footer" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; align-items: center;">
+        <a href="index.html" class="btn btn-secondary" id="btn-back-to-cake">
+          <span>← Back to Cake</span> 🎂
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <style>
+    @keyframes gentleWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="js/shared.js"></script>
+  <script src="js/letter.js"></script>
+</body>
+</html>

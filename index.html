@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Happy Birthday Devanshi! 🎂</title>
+  
+  <!-- SEO & Social Open Graph Previews -->
+  <meta name="description" content="A warm, handmade birthday celebration site for Devanshi.">
+  <meta property="og:title" content="Happy Birthday Devanshi! 🎂✨">
+  <meta property="og:description" content="Make a wish and blow out the candles!">
+  <meta property="og:type" content="website">
+  
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cake.css">
+</head>
+<body>
+
+  <!-- Floating Sparkle Background Particles -->
+  <div class="sparkle-bg" id="sparkle-container" aria-hidden="true"></div>
+
+  <!-- Music Controller Toggle -->
+  <button id="audio-toggle" class="audio-toggle-btn" aria-label="Toggle background music" title="Toggle Music">
+    <span class="music-icon">🎵</span>
+  </button>
+  <audio id="bg-audio" src="assets/audio/birthday-chime.wav" loop preload="auto"></audio>
+
+  <!-- Main Viewport -->
+  <div class="app-viewport">
+    <main class="page-container" id="cake-page">
+      
+      <!-- Greeting Headline -->
+      <header class="greeting-header">
+        <h1 class="script-heading main-title" style="font-size: clamp(2.4rem, 8vw, 3.8rem); color: var(--color-primary);">
+          Happy Birthday Devanshi ✨
+        </h1>
+        <p class="sub-hint">Make a wish, blow out the candles, and celebrate!</p>
+      </header>
+
+      <!-- Placeholder Cake Showcase (to be expanded in Phase 2) -->
+      <section class="cake-stage" aria-label="Birthday Cake Display" style="margin: 2rem 0; min-height: 220px; display: flex; align-items: center; justify-content: center; width: 100%;">
+        <div style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius-card); border: 1px dashed var(--color-primary-light); box-shadow: 0 8px 24px var(--color-paper-shadow); max-width: 320px; width: 100%;">
+          <div style="font-size: 4.5rem; margin-bottom: 0.5rem; animation: gentleBounce 2s infinite ease-in-out;">🎂</div>
+          <p style="font-weight: 600; color: var(--color-text);">Your Birthday Cake is being prepared...</p>
+          <p class="sub-hint" style="font-size: 0.85rem;">Phase 2 will light up the tiers and candles here</p>
+        </div>
+      </section>
+
+      <!-- Phase 1 Placeholder Action Button -->
+      <footer class="action-footer" style="margin-top: 1rem;">
+        <a href="letter.html" class="btn btn-primary" id="btn-open-letter">
+          <span>Open your letter</span> 💌
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <style>
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="js/shared.js"></script>
+  <script src="js/cake.js"></script>
+</body>
+</html>
