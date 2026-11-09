@@ -49,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (hintWrapper) {
-        hintText.textContent = "A personal wish, just for you ✨";
-        hintText.style.color = "var(--gold-light)";
+        hintWrapper.style.display = 'none';
       }
     }, 450);
   }
