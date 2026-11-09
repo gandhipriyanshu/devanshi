@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Base Stylesheet - Birthday Wishing Website for Devanshi
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-color: #FFF6F6;
+  --bg-gradient: radial-gradient(circle at 50% 20%, #FFF9F9 0%, #FFEBEF 100%);
+  --color-primary: #FF7597;
+  --color-primary-hover: #F25A80;
+  --color-primary-light: #FFDFE7;
+  --color-vanilla: #FFF9E6;
+  --color-flame: #FFB703;
+  --color-flame-glow: rgba(255, 183, 3, 0.45);
+  --color-text: #2E222A;
+  --color-text-muted: #7A6973;
+  --color-paper: #FFFDF9;
+  --color-paper-shadow: rgba(85, 45, 60, 0.08);
+  --color-envelope: #FDE8EC;
+  --color-envelope-dark: #F5CBD3;
+  
+  /* Typography */
+  --font-handwritten: 'Caveat', cursive;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Dimensions & Spacing */
+  --max-content-width: 480px;
+  --border-radius-pill: 9999px;
+  --border-radius-card: 20px;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+/* App Centered Layout */
+.app-viewport {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  position: relative;
+}
+
+.page-container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Typography Utilities */
+.script-heading {
+  font-family: var(--font-handwritten);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.sub-hint {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* Reusable Interactive Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--border-radius-pill);
+  transition: var(--transition-smooth);
+  user-select: none;
+  box-shadow: 0 4px 14px rgba(255, 117, 151, 0.25);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 117, 151, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--color-text);
+  border: 1px solid var(--color-primary-light);
+  box-shadow: 0 2px 8px var(--color-paper-shadow);
+}
+
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background-color: #FFFDFD;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Subtle Floating Elements */
+.sparkle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Accessible Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
