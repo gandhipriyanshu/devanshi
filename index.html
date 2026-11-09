@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Happy Birthday Devanshi! 🎂</title>
+  <title>Happy Birthday Devanshi ✨</title>
   
-  <!-- SEO & Social Open Graph Previews -->
-  <meta name="description" content="A warm, handmade birthday celebration site for Devanshi.">
+  <!-- Open Graph & Social Preview -->
+  <meta name="description" content="A warm, handmade birthday celebration for Devanshi.">
   <meta property="og:title" content="Happy Birthday Devanshi! 🎂✨">
-  <meta property="og:description" content="Make a wish and blow out the candles!">
+  <meta property="og:description" content="Make a wish and blow out the candle!">
   <meta property="og:type" content="website">
   
-  <!-- Inline SVG Favicon -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/base.css">
@@ -20,11 +24,14 @@
 </head>
 <body>
 
-  <!-- Floating Sparkle Background Particles -->
-  <div class="sparkle-bg" id="sparkle-container" aria-hidden="true"></div>
+  <!-- Ambient Golden Glow -->
+  <div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
 
-  <!-- Music Controller Toggle -->
-  <button id="audio-toggle" class="audio-toggle-btn" aria-label="Toggle background music" title="Toggle Music">
+  <!-- Twinkling Starlight -->
+  <div class="starlight-container" id="starlight-container" aria-hidden="true"></div>
+
+  <!-- Audio Controller -->
+  <button id="audio-toggle" class="audio-toggle-btn" aria-label="Play background music" title="Toggle Music">
     <span class="music-icon">🎵</span>
   </button>
   <audio id="bg-audio" src="assets/audio/birthday-chime.wav" loop preload="auto"></audio>
@@ -33,26 +40,84 @@
   <div class="app-viewport">
     <main class="page-container" id="cake-page">
       
-      <!-- Greeting Headline -->
-      <header class="greeting-header">
-        <h1 class="script-heading main-title" style="font-size: clamp(2.4rem, 8vw, 3.8rem); color: var(--color-primary);">
-          Happy Birthday Devanshi ✨
-        </h1>
-        <p class="sub-hint">Make a wish, blow out the candles, and celebrate!</p>
+      <!-- Greeting Header -->
+      <header class="cake-header">
+        <p class="sub-tagline">Make a wish, close your eyes ✨</p>
+        <h1 class="hero-title">Happy Birthday, Devanshi</h1>
       </header>
 
-      <!-- Placeholder Cake Showcase (to be expanded in Phase 2) -->
-      <section class="cake-stage" aria-label="Birthday Cake Display" style="margin: 2rem 0; min-height: 220px; display: flex; align-items: center; justify-content: center; width: 100%;">
-        <div style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius-card); border: 1px dashed var(--color-primary-light); box-shadow: 0 8px 24px var(--color-paper-shadow); max-width: 320px; width: 100%;">
-          <div style="font-size: 4.5rem; margin-bottom: 0.5rem; animation: gentleBounce 2s infinite ease-in-out;">🎂</div>
-          <p style="font-weight: 600; color: var(--color-text);">Your Birthday Cake is being prepared...</p>
-          <p class="sub-hint" style="font-size: 0.85rem;">Phase 2 will light up the tiers and candles here</p>
-        </div>
-      </section>
+      <!-- Cake Showcase -->
+      <div class="cake-showcase-container" id="cake-stage">
+        
+        <!-- Ambient Shadow Under Cake -->
+        <div class="cake-shadow-podium" aria-hidden="true"></div>
 
-      <!-- Phase 1 Placeholder Action Button -->
-      <footer class="action-footer" style="margin-top: 1rem;">
-        <a href="letter.html" class="btn btn-primary" id="btn-open-letter">
+        <!-- Interactive Real Cake Wrapper -->
+        <div class="cake-wrapper" id="cake-wrapper" title="Tap candle to blow it out">
+          
+          <!-- Candlelight Reflection on Cake Glaze -->
+          <div class="cake-candlelight-reflection" id="cake-reflection" aria-hidden="true"></div>
+
+          <!-- Real Chocolate Birthday Cake Image -->
+          <img src="assets/images/cake.png" alt="Devanshi's Chocolate Birthday Cake" class="real-cake-img" id="cake-img">
+
+          <!-- Slender Golden Candle Mounted on Top -->
+          <div class="candle-container" id="candle" role="button" tabindex="0" aria-label="Birthday Candle. Tap or press enter to blow out.">
+            
+            <!-- Candle Smoke Wisp (Triggered on blow) -->
+            <div class="smoke-particle" id="smoke" aria-hidden="true"></div>
+
+            <!-- Animated Golden Flame -->
+            <div class="candle-flame-wrapper" id="flame" aria-hidden="true">
+              <svg class="flame-svg" viewBox="0 0 30 50">
+                <defs>
+                  <radialGradient id="outerFlame" cx="50%" cy="65%" r="60%">
+                    <stop offset="0%" stop-color="#FFF275" />
+                    <stop offset="45%" stop-color="#FF951C" />
+                    <stop offset="100%" stop-color="#E63946" />
+                  </radialGradient>
+                  <radialGradient id="innerFlame" cx="50%" cy="65%" r="55%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="60%" stop-color="#FFF176" />
+                    <stop offset="100%" stop-color="#FFA000" />
+                  </radialGradient>
+                </defs>
+                <!-- Outer Aura -->
+                <path d="M 15 0 C 18 12, 28 24, 28 35 C 28 44, 22 50, 15 50 C 8 50, 2 44, 2 35 C 2 24, 12 12, 15 0 Z" fill="url(#outerFlame)"/>
+                <!-- Inner Bright Core -->
+                <path d="M 15 13 C 17 21, 23 29, 23 37 C 23 44, 19 48, 15 48 C 11 48, 7 44, 7 37 C 7 29, 13 21, 15 13 Z" fill="url(#innerFlame)"/>
+                <!-- Base Blue Spark -->
+                <ellipse cx="15" cy="46" rx="5" ry="2.5" fill="#60A5FA" opacity="0.6"/>
+              </svg>
+            </div>
+
+            <!-- Wick -->
+            <div class="candle-wick" aria-hidden="true"></div>
+
+            <!-- Golden Striped Candle Stick -->
+            <div class="candle-stick" aria-hidden="true"></div>
+          </div>
+
+        </div>
+
+        <!-- Quick Tap to Blow Accessibility Button -->
+        <button type="button" class="tap-blow-pill" id="quick-blow-btn" aria-label="Blow out candle">
+          💨 Tap to blow candle
+        </button>
+
+      </div>
+
+      <!-- Interactive Hint -->
+      <div class="hint-wrapper">
+        <div class="interactive-pill" id="wish-hint">
+          <span class="magic-star">✨</span>
+          <span id="hint-text">Blow out the candle to send your wish</span>
+        </div>
+      </div>
+
+      <!-- Action Button (Revealed after wish) -->
+      <footer class="action-area">
+        <a href="letter.html" class="btn btn-luxury letter-reveal-btn" id="letter-btn">
           <span>Open your letter</span> 💌
         </a>
       </footer>
@@ -60,13 +125,9 @@
     </main>
   </div>
 
-  <style>
-    @keyframes gentleBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-  </style>
-
+  <!-- Canvas Confetti Library for Silky Smooth Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  
   <!-- Scripts -->
   <script src="js/shared.js"></script>
   <script src="js/cake.js"></script>

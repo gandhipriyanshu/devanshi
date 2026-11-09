@@ -1,4 +1,244 @@
 /* ==========================================================================
-   Envelope & Letter Styles (Page 2) - Phase 4 & 5
+   Luxury Envelope & Letter Styles (Page 2) - Flawless Reading Experience
    ========================================================================== */
 
+#letter-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: calc(100dvh - 3rem);
+  padding: 1rem 0 2.5rem;
+}
+
+.letter-header {
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  transition: opacity 0.5s ease;
+}
+
+/* Envelope Showcase Stage */
+.envelope-stage {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The Envelope Container */
+.envelope-box {
+  position: relative;
+  width: 320px;
+  height: 215px;
+  background: #231B1F;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(233, 184, 106, 0.12);
+  cursor: pointer;
+  transition: all 0.6s var(--ease-spring);
+  perspective: 1000px;
+}
+
+.envelope-box:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(233, 184, 106, 0.2);
+}
+
+/* Envelope Back & Internal Texture */
+.envelope-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #2A1F25 0%, #171114 100%);
+  border: 1px solid rgba(233, 184, 106, 0.2);
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Geometric Pocket Folds of Envelope */
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 110px 160px 0 160px;
+  border-color: #241A20 transparent transparent transparent;
+  transform: rotate(180deg);
+  z-index: 3;
+}
+
+.envelope-body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 60%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Envelope Top Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 118px 160px 0 160px;
+  border-color: #362831 transparent transparent transparent;
+  transform-origin: top center;
+  transition: transform 0.75s var(--ease-spring), z-index 0.3s ease;
+  z-index: 5;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Wax Seal Button */
+.wax-seal {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle at 35% 35%, #D4425A 0%, #A81E36 60%, #6E1022 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.45), 0 0 16px rgba(212, 66, 90, 0.5);
+  z-index: 6;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-spring), opacity 0.4s ease;
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 8px 24px rgba(212, 66, 90, 0.7);
+}
+
+.wax-seal-inner {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #FFE5EB;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  user-select: none;
+}
+
+/* The Letter Paper */
+.letter-paper {
+  display: none;
+  width: 100%;
+  max-width: 420px;
+  background: #FFFDF9;
+  background-image: radial-gradient(#F5EDE0 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+  border-radius: 16px;
+  padding: 2.25rem 1.85rem;
+  color: #2B1F26;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(233, 184, 106, 0.2);
+  border: 1px solid rgba(233, 184, 106, 0.3);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-spring);
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 20;
+}
+
+/* When Envelope is Opened */
+.envelope-box.opened {
+  display: none;
+}
+
+.letter-paper.revealed {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Letter Typography & Texture */
+.letter-greeting {
+  font-family: var(--font-handwritten);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #8C2A44;
+  margin-bottom: 0.85rem;
+  line-height: 1.1;
+}
+
+.letter-body {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #382C34;
+  margin-bottom: 1.25rem;
+}
+
+.letter-signoff {
+  font-family: var(--font-handwritten);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #8C2A44;
+  text-align: right;
+  margin-top: 1.25rem;
+}
+
+/* Polaroid Attached in Letter */
+.letter-polaroid {
+  margin: 1.25rem auto 0.75rem;
+  width: 100%;
+  max-width: 220px;
+  display: block;
+  border-radius: 6px;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.letter-polaroid:hover {
+  transform: rotate(0deg) scale(1.04);
+}
+
+/* Navigation Actions */
+.letter-action-footer {
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 380px) {
+  .envelope-box {
+    width: 280px;
+    height: 185px;
+  }
+  .envelope-flap {
+    border-width: 100px 140px 0 140px;
+  }
+  .envelope-body::before {
+    border-width: 100px 140px 0 140px;
+  }
+  .letter-paper {
+    padding: 1.5rem 1.25rem;
+  }
+  .letter-greeting {
+    font-size: 1.8rem;
+  }
+}

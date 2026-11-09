@@ -1,32 +1,35 @@
 /**
- * Shared Utilities: Background Sparkles & Persistent Audio Controller
- * Ensures consistent theme and audio continuity across index.html & letter.html.
+ * Shared Utilities: Starlight Ambience & Persistent Audio Controller
+ * Ensures luxury aesthetics and audio continuity across index.html & letter.html.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSparkles();
+  initStarlight();
   initAudioController();
 });
 
 /**
- * Spawns 18 floating ambient hearts and stars in the background
+ * Spawns subtle starlight twinkling particles in the background
  */
-function initSparkles() {
-  const container = document.getElementById('sparkle-container');
+function initStarlight() {
+  const container = document.getElementById('starlight-container');
   if (!container) return;
 
-  const symbols = ['✨', '💖', '⭐', '🌸', '💫'];
-  const count = 18;
-
-  for (let i = 0; i < count; i++) {
-    const span = document.createElement('span');
-    span.className = 'floating-item';
-    span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    span.style.left = `${Math.random() * 96}%`;
-    span.style.animationDuration = `${9 + Math.random() * 8}s`;
-    span.style.animationDelay = `${Math.random() * 10}s`;
-    span.style.fontSize = `${14 + Math.random() * 16}px`;
-    container.appendChild(span);
+  const starCount = 35;
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star-particle';
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    star.style.animationDuration = `${3 + Math.random() * 4}s`;
+    if (Math.random() > 0.6) {
+      star.style.width = '3px';
+      star.style.height = '3px';
+      star.style.background = '#FCE8CA';
+      star.style.boxShadow = '0 0 8px rgba(233, 184, 106, 0.8)';
+    }
+    container.appendChild(star);
   }
 }
 
@@ -67,19 +70,16 @@ function initAudioController() {
     }
   }
 
-  // Auto-resume if user previously activated music
   if (isPlayingSaved) {
     audio.play().then(() => {
       updateUI(true);
     }).catch(() => {
-      // Browser autoplay policy might require user interaction first
       updateUI(false);
     });
   } else {
     updateUI(false);
   }
 
-  // Toggle button click listener
   toggleBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (audio.paused) {
@@ -94,7 +94,6 @@ function initAudioController() {
     }
   });
 
-  // Preserve state before navigating
   window.addEventListener('beforeunload', () => {
     sessionStorage.setItem('music_time', audio.currentTime.toString());
   });
