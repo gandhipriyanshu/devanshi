@@ -50,6 +50,17 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Page Transitions */
+body {
+  opacity: 1;
+  transition: opacity 0.45s var(--ease-smooth);
+}
+
+body.page-fading-out {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
 /* Atmospheric Ambient Lighting */
 .ambient-glow {
   position: fixed;

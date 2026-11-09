@@ -312,22 +312,49 @@
   visibility: visible;
 }
 
-/* Quick Blow Action Pill for Mobile Accessibility */
+/* Quick Blow & Mic Action Pills */
+.blow-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  z-index: 10;
+}
+
 .tap-blow-pill {
   cursor: pointer;
   background: rgba(233, 184, 106, 0.12);
   border: 1px solid rgba(233, 184, 106, 0.35);
   color: var(--gold-light);
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  padding: 0.35rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.38rem 0.95rem;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  user-select: none;
 }
 
 .tap-blow-pill:hover {
-  background: rgba(233, 184, 106, 0.22);
+  background: rgba(233, 184, 106, 0.24);
   transform: scale(1.04);
+}
+
+.tap-blow-pill:active {
+  transform: scale(0.96);
+}
+
+.tap-blow-pill.listening {
+  background: rgba(255, 117, 151, 0.25);
+  border-color: rgba(255, 117, 151, 0.6);
+  color: #FFFFFF;
+  animation: listeningPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes listeningPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 117, 151, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 16px rgba(255, 117, 151, 0.6); }
 }
 
 /* Responsive Scaling */
@@ -652,22 +679,49 @@
   visibility: visible;
 }
 
-/* Quick Blow Action Pill for Mobile Accessibility */
+/* Quick Blow & Mic Action Pills */
+.blow-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  z-index: 10;
+}
+
 .tap-blow-pill {
   cursor: pointer;
   background: rgba(233, 184, 106, 0.12);
   border: 1px solid rgba(233, 184, 106, 0.35);
   color: var(--gold-light);
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  padding: 0.35rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.38rem 0.95rem;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  user-select: none;
 }
 
 .tap-blow-pill:hover {
-  background: rgba(233, 184, 106, 0.22);
+  background: rgba(233, 184, 106, 0.24);
   transform: scale(1.04);
+}
+
+.tap-blow-pill:active {
+  transform: scale(0.96);
+}
+
+.tap-blow-pill.listening {
+  background: rgba(255, 117, 151, 0.25);
+  border-color: rgba(255, 117, 151, 0.6);
+  color: #FFFFFF;
+  animation: listeningPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes listeningPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 117, 151, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 16px rgba(255, 117, 151, 0.6); }
 }
 
 /* Responsive Scaling */

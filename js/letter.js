@@ -73,8 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (replayBtn) {
-    replayBtn.addEventListener('click', () => {
+    replayBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       sessionStorage.removeItem('candle_blown');
+      document.body.classList.add('page-fading-out');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 380);
     });
   }
 });
