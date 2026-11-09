@@ -169,26 +169,27 @@ document.addEventListener('DOMContentLoaded', () => {
  * Staggered Letter-by-Letter Entrance Animation for the Headline
  */
 function initHeadlineAnimation() {
-  const title = document.querySelector('.hero-title');
-  if (!title) return;
+  const lines = document.querySelectorAll('.hero-title .title-line');
+  if (!lines || !lines.length) return;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const rawText = title.textContent.trim();
-  title.innerHTML = '';
-  title.setAttribute('aria-label', rawText);
-
-  Array.from(rawText).forEach((char, index) => {
-    const span = document.createElement('span');
-    span.textContent = char;
-    if (char === ' ') {
-      span.className = 'char-space';
-    } else {
-      span.className = 'char-span';
-      span.style.setProperty('--char-index', index);
-    }
-    title.appendChild(span);
+  let globalCharIndex = 0;
+  lines.forEach((line) => {
+    const rawText = line.textContent.trim();
+    line.innerHTML = '';
+    Array.from(rawText).forEach((char) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      if (char === ' ') {
+        span.className = 'char-space';
+      } else {
+        span.className = 'char-span';
+        span.style.setProperty('--char-index', globalCharIndex++);
+      }
+      line.appendChild(span);
+    });
   });
 }

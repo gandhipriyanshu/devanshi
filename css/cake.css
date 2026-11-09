@@ -30,12 +30,26 @@
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(2.2rem, 7.5vw, 3.2rem);
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.01em;
   text-shadow: 0 4px 30px rgba(233, 184, 106, 0.2);
+}
+
+.title-line {
+  display: block;
+  font-size: clamp(1.9rem, 6.5vw, 2.9rem);
+}
+
+.title-line.name-line {
+  font-size: clamp(2.2rem, 7.5vw, 3.3rem);
+  margin-top: 0.15rem;
+  letter-spacing: 0.02em;
 }
 
 /* Letter-by-Letter Entrance Animation (Phase 2) */
@@ -398,12 +412,26 @@
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(2.2rem, 7.5vw, 3.2rem);
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.01em;
   text-shadow: 0 4px 30px rgba(233, 184, 106, 0.2);
+}
+
+.title-line {
+  display: block;
+  font-size: clamp(1.9rem, 6.5vw, 2.9rem);
+}
+
+.title-line.name-line {
+  font-size: clamp(2.2rem, 7.5vw, 3.3rem);
+  margin-top: 0.15rem;
+  letter-spacing: 0.02em;
 }
 
 /* Letter-by-Letter Entrance Animation (Phase 2) */
