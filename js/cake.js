@@ -10,15 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const cakeWrapper = document.getElementById('cake-wrapper');
   const blowControls = document.getElementById('blow-controls');
   const quickBlowBtn = document.getElementById('quick-blow-btn');
-  const micBlowBtn = document.getElementById('mic-blow-btn');
   const hintText = document.getElementById('hint-text');
   const reflection = document.getElementById('cake-reflection');
   const letterBtn = document.getElementById('letter-btn');
   const ambientGlow = document.getElementById('ambient-glow');
 
   let isBlownOut = false;
-  let micStream = null;
-  let audioContext = null;
 
   // Check if candle was already blown out in this session
   if (sessionStorage.getItem('candle_blown') === 'true') {
@@ -29,15 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isBlownOut) return;
     isBlownOut = true;
     sessionStorage.setItem('candle_blown', 'true');
-
-    // Stop mic stream if active
-    if (micStream) {
-      micStream.getTracks().forEach(track => track.stop());
-      micStream = null;
-    }
-    if (audioContext && audioContext.state !== 'closed') {
-      audioContext.close().catch(() => {});
-    }
 
     // Trigger haptic if available on mobile
     if (navigator.vibrate) {
@@ -146,52 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'letter.html';
       }, 380);
     });
-  }
-
-  // Microphone Blow Detection (with Tap Fallback)
-  if (micBlowBtn && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    micBlowBtn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      if (isBlownOut) return;
-
-      try {
-        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const analyser = audioContext.createAnalyser();
-        const microphone = audioContext.createMediaStreamSource(micStream);
-        microphone.connect(analyser);
-        analyser.fftSize = 256;
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        micBlowBtn.textContent = '🌬️ Blow into mic now!';
-        micBlowBtn.classList.add('listening');
-
-        function checkBlowVolume() {
-          if (isBlownOut) return;
-          analyser.getByteFrequencyData(dataArray);
-          let sum = 0;
-          for (let i = 0; i < bufferLength; i++) {
-            sum += dataArray[i];
-          }
-          const averageVolume = sum / bufferLength;
-
-          // Threshold for blow breath noise
-          if (averageVolume > 48) {
-            blowOutCandle();
-            return;
-          }
-          requestAnimationFrame(checkBlowVolume);
-        }
-        checkBlowVolume();
-      } catch (err) {
-        console.log('Microphone not available or permission denied:', err);
-        micBlowBtn.textContent = '💨 Tap to blow';
-        micBlowBtn.classList.remove('listening');
-      }
-    });
-  } else if (micBlowBtn) {
-    micBlowBtn.style.display = 'none';
   }
 
   // Tap Event Listeners
